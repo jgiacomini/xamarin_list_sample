@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="Sample.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sample.UWP"
+    xmlns:models="using:Sample.UWP.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Name="ListViewPersonTemplate" x:DataType="models:Person">
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="{x:Bind FirstName}" Foreground="CornflowerBlue"/>
+                <TextBlock Text="{x:Bind LastName}" Foreground="DarkSlateGray"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Name="ListViewPersonVIPTemplate" x:DataType="models:Person">
+            <StackPanel Orientation="Vertical" Margin="0 10" Background="LightGoldenrodYellow">
+                <TextBlock Text="{x:Bind FirstName}" Foreground="CornflowerBlue"/>
+                <TextBlock Text="{x:Bind LastName}" Foreground="DarkSlateGray"/>
+            </StackPanel>
+        </DataTemplate>
+<local:PersonItemDataTemplateSelector 
+    x:Name="PersonItemDataTemplateSelector"
+    PersonStandardTemplate="{StaticResource ListViewPersonTemplate}"
+    PersonVIPTemplate="{StaticResource ListViewPersonVIPTemplate}"/>
+</Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          DataContext="{Binding test, Mode=OneTime}">
+<ListView ItemsSource="{x:Bind Persons}"                  
+            ItemTemplateSelector="{StaticResource PersonItemDataTemplateSelector}"
+                  Background="LightGreen"
+                  Header="Titre de ma liste"
+                  Footer="Pied de ma liste"
+                  Margin="20" Padding="20"
+                  />
+
+    </Grid>
+</Page>
