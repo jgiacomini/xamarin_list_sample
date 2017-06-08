@@ -17,13 +17,24 @@ namespace Sample.iOS
             set;
         }
 
-        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
-        {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+		{
+			// On précise que la fenêtre prend toute la place de l’écran
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            return true;
-        }
+			// Initialisation du contrôleur de vue par défaut 
+			var viewController = new Sample.iOS.MainViewController();
+
+			// Initialisation du contrôleur de navigation
+			var navigationController = new UINavigationController(viewController);
+
+			Window.RootViewController = navigationController;
+
+			// Affiche la fenêtre principale
+			Window.MakeKeyAndVisible();
+			return true;
+
+		}
 
         public override void OnResignActivation(UIApplication application)
         {
