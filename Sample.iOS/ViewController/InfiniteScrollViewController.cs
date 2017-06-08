@@ -99,6 +99,9 @@ namespace Sample.iOS
         private async Task<List<string>> GetPageDataAsync(int indexDeLaPage, int nombreDeCellulesParPages)
         {
             List<string> liste = new List<string>();
+
+            // affiche l'indicateur de téléchargement.
+
             UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
             await System.Threading.Tasks.Task.Delay(100);
             UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
