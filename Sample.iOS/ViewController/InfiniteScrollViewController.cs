@@ -105,7 +105,7 @@ namespace Sample.iOS
 
 			for (int i = 0; i < nombreDeCellulesParPages; i++)
             {
-                liste.Add($"Index Page {indexDeLaPage}, élèment {i}");
+                liste.Add($"Index page {indexDeLaPage}, élèment {i}");
             }
 
             return liste;
